@@ -8,10 +8,6 @@ const config = getDefaultConfig(__dirname);
 
 // thirdweb
 config.resolver.unstable_enablePackageExports = true;
-config.resolver.unstable_conditionNames = [
-  "react-native",
-  "browser",
-  "require",
-];
+config.resolver.unstable_conditionNames = ['react-native', 'browser', 'require'];
 
 module.exports = withNativeWind(config, { input: './global.css' });
