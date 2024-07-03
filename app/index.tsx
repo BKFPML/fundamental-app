@@ -1,4 +1,5 @@
 import { Stack, Link } from 'expo-router';
+import { View } from 'react-native';
 
 import { Button } from '~/components/Button';
 import HeaderBar from '~/components/HeaderBar';
@@ -16,7 +17,9 @@ export default function Home() {
         <HeaderBar />
         <FTitle className="text-4xl">Welcome to Fundamental!</FTitle>
         <FText className="text-lg">This is Fundamental</FText>
-        <ThemeToggle />
+        <View className="mx-auto">
+          <ThemeToggle />
+        </View>
         {/* <ScreenContent path="app/index.tsx" title="Home" />
         <Link href={{ pathname: '/details', params: { name: 'Dan' } }} asChild>
           <Button title="Show Details" />
