@@ -1,4 +1,4 @@
-import { View, Image, StyleSheet } from 'react-native';
+import { View, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 import Title from './Text/FTitle';
