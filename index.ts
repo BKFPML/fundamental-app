@@ -1,5 +1,5 @@
 // file: index.ts
 
-// this needs to be imported before expo-router
-import '@thirdweb-dev/react-native-adapter';
+// the thirdweb react native adapter needs to be imported before the expo-router
+// import '@thirdweb-dev/react-native-adapter';
 import 'expo-router/entry';
