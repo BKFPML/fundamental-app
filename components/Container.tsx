@@ -1,4 +1,5 @@
-import { View } from 'react-native';
+import { useState } from 'react';
+import { View, TouchableOpacity } from 'react-native';
 
 import FText from './Text/FText';
 
@@ -8,14 +9,20 @@ interface ContainerProps {
   children: React.ReactNode;
 }
 const Container = ({ title, className, children }: ContainerProps) => {
+  const [isOpen, setIsOpen] = useState(true);
+  const toggleOpen = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <View className={`${className} rounded-xl bg-content`}>
-      <View className="rounded-t-xl bg-primary px-4 py-2">
+      <TouchableOpacity
+        onPress={toggleOpen}
+        className={`${isOpen ? 'rounded-t-xl' : 'rounded-xl'} bg-primary px-4 py-2`}>
         <FText className="text-white" bold>
           {title}
         </FText>
-      </View>
-      <View className="p-4">{children}</View>
+      </TouchableOpacity>
+      {isOpen && <View className="p-4">{children}</View>}
     </View>
   );
 };
