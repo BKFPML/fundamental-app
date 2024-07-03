@@ -7,13 +7,13 @@ import { ScreenContent } from '~/components/ScreenContent';
 import FText from '~/components/Text/FText';
 import FTitle from '~/components/Text/FTitle';
 import ThemeToggle from '~/components/ThemeToggle';
-import { Container } from '~/components/Wrappers/Container';
+import { Frame } from '~/components/Wrappers/Frame';
 
 export default function Home() {
   return (
     <>
       <Stack.Screen options={{ title: 'Home', headerShown: false }} />
-      <Container>
+      <Frame>
         <HeaderBar />
         <FTitle className="text-4xl">Welcome to Fundamental!</FTitle>
         <FText className="text-lg">This is Fundamental</FText>
@@ -24,7 +24,7 @@ export default function Home() {
         <Link href={{ pathname: '/details', params: { name: 'Dan' } }} asChild>
           <Button title="Show Details" />
         </Link> */}
-      </Container>
+      </Frame>
     </>
   );
 }
