@@ -39,11 +39,11 @@ export default function Home() {
           <View className="mx-auto">
             <ThemeToggle />
           </View>
-          <Container title="Hello" className="mt-4">
-            <View>
-              <CreateWalletButton />
-            </View>
-          </Container>
+          {/* Make a button to create a wallet when pressed call the function CreateWalletButton */}
+          <View className="mx-auto">
+          <CreateWalletButton />
+
+          </View>
         </ScrollView>
         {/* <Link href={{ pathname: '/details', params: { name: 'Dan' } }} asChild>
           <Button title="Show Details" />
