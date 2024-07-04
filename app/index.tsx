@@ -12,7 +12,6 @@ import { Frame } from '~/components/Wrappers/Frame';
 import 'fast-text-encoding';
 import 'react-native-get-random-values';
 import '@ethersproject/shims';
-import {PrivyProvider} from '@privy-io/expo';
 
 export default function Home() {
   return (
