@@ -17,7 +17,7 @@ interface TitleProps {
   bold?: boolean;
 }
 
-const Title = ({ children, className, italic, medium, bold, ...props }: TitleProps) => {
+const FText = ({ children, className, italic, medium, bold, ...props }: TitleProps) => {
   const [fontsLoaded] = useFonts({
     DMSans_400Regular,
     DMSans_400Regular_Italic,
@@ -37,10 +37,13 @@ const Title = ({ children, className, italic, medium, bold, ...props }: TitlePro
   if (italic) font += '_Italic';
 
   return (
-    <Text className={`${className}`} style={{ fontFamily: font }} {...props}>
+    <Text
+      className={`${className} text-text`}
+      style={{ fontFamily: font, fontSize: 18 }}
+      {...props}>
       {children}
     </Text>
   );
 };
 
-export default Title;
+export default FText;
