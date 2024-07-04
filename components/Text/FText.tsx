@@ -37,7 +37,10 @@ const FText = ({ children, className, italic, medium, bold, ...props }: TitlePro
   if (italic) font += '_Italic';
 
   return (
-    <Text className={`${className} text-text`} style={{ fontFamily: font }} {...props}>
+    <Text
+      className={`${className} text-text`}
+      style={{ fontFamily: font, fontSize: 18 }}
+      {...props}>
       {children}
     </Text>
   );
