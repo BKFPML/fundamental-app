@@ -10,7 +10,9 @@ const Layout = () => {
   return (
     <PrivyProvider appId="clxd5oc5m007jrpv8y8clt6z7">
       <ThemeWrapper>
-        <Stack />
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        </Stack>
       </ThemeWrapper>
     </PrivyProvider>
   );
