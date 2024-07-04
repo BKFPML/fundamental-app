@@ -1,4 +1,4 @@
-import { Stack, useLocalSearchParams } from 'expo-router';
+import { Stack, useLocalSearchParams, Link } from 'expo-router';
 import { View } from 'react-native';
 
 import FText from '~/components/Text/FText';
@@ -9,10 +9,14 @@ export default function Details() {
 
   return (
     <>
-      <Stack.Screen options={{ title: 'Details' }} />
+      <Stack.Screen options={{ title: 'Details', headerShown: false }} />
       <Frame>
         <View>
           <FText className="text-2xl">Details for {name}</FText>
+
+          <Link href="/">
+            <FText>Go back</FText>
+          </Link>
         </View>
       </Frame>
     </>

@@ -1,9 +1,12 @@
 import { SafeAreaView, View } from 'react-native';
 
+import NavBar from '../NavBar';
+
 export const Frame = ({ children }: { children: React.ReactNode }) => {
   return (
     <View className={styles.outerMargin}>
       <SafeAreaView className={styles.frame}>{children}</SafeAreaView>
+      {/* <NavBar /> */}
     </View>
   );
 };
