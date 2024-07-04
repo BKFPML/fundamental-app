@@ -1,5 +1,5 @@
+import { Feather } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather'; // FontAwesome or any other icon set you prefer
 
 import { useTheme } from './Wrappers/ThemeWrapper';
 
@@ -8,9 +8,9 @@ const ThemeToggle = () => {
   return (
     <TouchableOpacity onPress={toggleTheme}>
       {theme === 'light' ? (
-        <Icon name="sun" size={42} className="text-text" />
+        <Feather name="sun" size={42} className="text-text" />
       ) : (
-        <Icon name="moon" size={42} className="text-text" />
+        <Feather name="moon" size={42} className="text-text" />
       )}
     </TouchableOpacity>
   );
