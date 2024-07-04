@@ -36,7 +36,7 @@ export default function Layout() {
                 name="home"
                 className={`${focused ? 'text-primary' : 'text-text'}`}
               />
-              <FText bold className={`${focused ? 'text-primary' : 'text-text'}`}>
+              <FText bold className={`${focused ? '!text-primary' : '!text-text'}`}>
                 Home
               </FText>
             </View>
@@ -54,7 +54,7 @@ export default function Layout() {
                 name="percent"
                 className={`${focused ? 'text-primary' : 'text-text'}`}
               />
-              <FText bold className={`${focused ? 'text-primary' : 'text-text'}`}>
+              <FText bold className={`${focused ? '!text-primary' : '!text-text'}`}>
                 Earn
               </FText>
             </View>
