@@ -39,7 +39,7 @@ export const LoginScreen = () => {
     <Frame>
       <FTitle className="text-4xl" >Login</FTitle>
       <StatusBar style="auto" />
-      <Container title="E-mail" className="mt-4">
+      <Container title="E-mail" className="mt-2">
       <TextInput
         value={email}
         onChangeText={setEmail}
@@ -76,7 +76,7 @@ export const LoginScreen = () => {
           </View>
         ))}
       </View> */}
-      <FText className="text-text pt-2">
+      <FText className="text-text mt-2">
         (OTP state:{" "}
         <Text style={{color: "blue"}}>{emailFlow.state.status}</Text>)
       </FText>
