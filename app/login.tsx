@@ -1,6 +1,5 @@
 import { usePrivy, useLoginWithEmail, useOAuthFlow } from '@privy-io/expo';
 import Constants from 'expo-constants';
-import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
 
@@ -38,9 +37,8 @@ export const LoginScreen = () => {
 
   return (
     <Frame>
-      <FTitle className="text-4xl">Login</FTitle>
-      <StatusBar style="auto" />
-      <Container title="E-mail" className="mt-2 flex">
+      <FTitle className="mx-auto text-4xl">Fundamental</FTitle>
+      <Container title="E-Mail" className="mt-2 flex">
         <View className="mb-4 rounded-2xl border-2 border-gray-300">
           <TextInput
             value={email}
