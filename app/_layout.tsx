@@ -7,7 +7,9 @@ import { ThemeWrapper } from '~/components/Wrappers/ThemeWrapper';
 const Layout = () => {
   return (
     <ThemeWrapper>
-      <Stack />
+      <Stack>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      </Stack>
     </ThemeWrapper>
   );
 };
