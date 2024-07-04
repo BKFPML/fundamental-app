@@ -8,12 +8,26 @@ import FText from '~/components/Text/FText';
 import FTitle from '~/components/Text/FTitle';
 import ThemeToggle from '~/components/ThemeToggle';
 import { Frame } from '~/components/Wrappers/Frame';
+import {usePrivy} from '@privy-io/expo';
+import CreateWalletButton from '~/components/CreateWalletButton';
+import { LoginScreen } from './login';
 
 import 'fast-text-encoding';
 import 'react-native-get-random-values';
 import '@ethersproject/shims';
 
 export default function Home() {
+  const {isReady} = usePrivy();
+  const {user} = usePrivy();
+
+  if (!isReady) {
+    return <FText>Loading...</FText>; // TODO: Make a loading screen
+  }
+
+  if (!user) {
+    return <LoginScreen />;
+  }
+
   return (
     <>
       <Stack.Screen options={{ title: 'Home', headerShown: false }} />
@@ -27,14 +41,7 @@ export default function Home() {
           </View>
           <Container title="Hello" className="mt-4">
             <View>
-              <FText>
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut alabore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum."
-              </FText>
+              <CreateWalletButton />
             </View>
           </Container>
         </ScrollView>
