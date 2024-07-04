@@ -3,7 +3,11 @@ import {StatusBar} from "expo-status-bar";
 import React, {useEffect, useState} from "react";
 import {Text, TextInput, View} from "react-native";
 import {usePrivy, useLoginWithEmail, useOAuthFlow} from "@privy-io/expo";
-import { Button } from "react-native";
+import { Button } from "~/components/Button";
+import FText from "~/components/Text/FText";
+import FTitle from "~/components/Text/FTitle";
+import { Frame } from "~/components/Wrappers/Frame";
+import Container from "~/components/Container";
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState(Constants.expoConfig?.extra?.email || "");
@@ -32,22 +36,20 @@ export const LoginScreen = () => {
   }
 
   return (
-    <View>
-      <Text>Login</Text>
-      <Text style={{color: "rgba(0,0,0,0.4)", marginVertical: 10}}>
-        (OTP state:{" "}
-        <Text style={{color: "blue"}}>{emailFlow.state.status}</Text>)
-      </Text>
+    <Frame>
+      <FTitle className="text-4xl" >Login</FTitle>
       <StatusBar style="auto" />
-
+      <Container title="E-mail" className="mt-4">
       <TextInput
         value={email}
         onChangeText={setEmail}
         placeholder="Email"
         inputMode="email"
+        style={{marginTop: 20, marginBottom: 20, fontSize: 20}}
       />
       <Button
         title="Send Code"
+        className="bg-primary"
         onPress={() => emailFlow.sendCode({email})}
       />
 
@@ -56,13 +58,15 @@ export const LoginScreen = () => {
         onChangeText={setCode}
         placeholder="Code"
         inputMode="numeric"
+        style={{marginTop: 20, marginBottom: 20, fontSize: 20}}
       />
       <Button
         title="Login"
+        className="bg-primary"
         onPress={() => emailFlow.loginWithCode({code})}
       />
 
-      <View style={{display: "flex", flexDirection: "row", gap: 5, margin: 10}}>
+      {/* <View style={{display: "flex", flexDirection: "row", gap: 5, margin: 10}}>
         {(["github", "google", "discord", "apple"] as const).map((provider) => (
           <View key={provider}>
             <Button
@@ -71,7 +75,12 @@ export const LoginScreen = () => {
             />
           </View>
         ))}
-      </View>
-    </View>
+      </View> */}
+      <FText className="text-text pt-2">
+        (OTP state:{" "}
+        <Text style={{color: "blue"}}>{emailFlow.state.status}</Text>)
+      </FText>
+      </Container>
+    </Frame>
   );
 };
