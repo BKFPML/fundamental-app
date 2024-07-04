@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEmbeddedWallet, isNotCreated } from '@privy-io/expo';
-import { Button, Alert } from 'react-native';
+import { Alert } from 'react-native';
+import { Button } from './Button';
 
 const CreateWalletButton = () => {
   const wallet = useEmbeddedWallet();
@@ -15,7 +16,7 @@ const CreateWalletButton = () => {
   };
 
   if (isNotCreated(wallet)) {
-    return <Button onPress={handleCreateWallet} title="Create Wallet" />;
+    return <Button onPress={handleCreateWallet} className="bg-primary pt-2" title="Create Wallet" />;
   }
 
   return null;
