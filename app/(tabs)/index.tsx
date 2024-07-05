@@ -37,7 +37,7 @@ export default function Tab() {
 
   return (
     <Frame>
-      <HeaderBar />
+      <HeaderBar title="Home" />
       <ScrollView>
         <FTitle className="text-4xl">Welcome to Fundamental!</FTitle>
         <FText className="text-lg">This is Fundamental</FText>
@@ -56,7 +56,7 @@ export default function Tab() {
             </FText>
           </View>
         </Container>
-        <Container title="Hello" className="mt-4">
+        <Container title="World" className="mt-4">
           <View>
             <FText>
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -71,7 +71,10 @@ export default function Tab() {
         <View className="mx-auto">
           <CreateWalletButton />
         </View>
-        <Link href={{ pathname: '/details', params: { name: 'Dan' } }} asChild>
+        <Link
+          className="mt-4 bg-primary"
+          href={{ pathname: '/details', params: { name: 'Dan' } }}
+          asChild>
           <Button title="Show Details" />
         </Link>
       </ScrollView>
