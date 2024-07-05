@@ -17,7 +17,7 @@ import 'fast-text-encoding';
 import 'react-native-get-random-values';
 import '@ethersproject/shims';
 
-export default function Tab() {
+export default function Home() {
   const { isReady, user } = usePrivy();
 
   useEffect(() => {
