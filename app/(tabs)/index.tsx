@@ -1,31 +1,38 @@
-import { Link } from 'expo-router';
+import { usePrivy } from '@privy-io/expo';
+import { Link, router } from 'expo-router';
+import { useEffect } from 'react';
 import { View, ScrollView } from 'react-native';
 
 import { Button } from '~/components/Button';
 import Container from '~/components/Container';
+import CreateWalletButton from '~/components/CreateWalletButton';
 import HeaderBar from '~/components/HeaderBar';
+import Loading from '~/components/Loading';
 import FText from '~/components/Text/FText';
 import FTitle from '~/components/Text/FTitle';
 import ThemeToggle from '~/components/ThemeToggle';
 import { Frame } from '~/components/Wrappers/Frame';
-import {usePrivy} from '@privy-io/expo';
-import CreateWalletButton from '~/components/CreateWalletButton';
-import { LoginScreen } from '../login';
 
 import 'fast-text-encoding';
 import 'react-native-get-random-values';
 import '@ethersproject/shims';
 
 export default function Tab() {
-  const {isReady} = usePrivy();
-  const {user} = usePrivy();
+  const { isReady, user } = usePrivy();
+
+  useEffect(() => {
+    if (isReady && !user) {
+      router.navigate('login');
+    }
+  }, [isReady, user, router]);
 
   if (!isReady) {
-    return <FText>Loading...</FText>; // TODO: Make a loading screen
+    return <Loading />;
   }
 
+  //* Fail safe
   if (!user) {
-    return <LoginScreen />;
+    return null;
   }
 
   return (
@@ -63,7 +70,7 @@ export default function Tab() {
         </Container>
         <View className="mx-auto">
           <CreateWalletButton />
-          </View>
+        </View>
         <Link href={{ pathname: '/details', params: { name: 'Dan' } }} asChild>
           <Button title="Show Details" />
         </Link>
