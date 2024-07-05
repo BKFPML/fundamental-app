@@ -1,3 +1,4 @@
+import { Feather } from '@expo/vector-icons';
 import { View } from 'react-native';
 
 import HeaderBar from '~/components/HeaderBar';
@@ -8,8 +9,9 @@ export default function Tab() {
   return (
     <Frame>
       <HeaderBar title="Earn" />
-      <View>
-        <FText className="text-2xl">Earn Page</FText>
+      <View className="mx-auto mt-60 items-center">
+        <Feather name="package" size={64} className="text-text" />
+        <FText className="text-2xl">Under construction</FText>
       </View>
     </Frame>
   );
