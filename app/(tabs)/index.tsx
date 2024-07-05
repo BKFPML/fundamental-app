@@ -22,7 +22,7 @@ export default function Tab() {
 
   useEffect(() => {
     if (isReady && !user) {
-      router.navigate('login');
+      router.navigate('login'); // TODO: disable login page back gesture
     }
   }, [isReady, user, router]);
 
@@ -68,7 +68,7 @@ export default function Tab() {
             </FText>
           </View>
         </Container>
-        <View className="mx-auto">
+        <View className="mt-4">
           <CreateWalletButton />
         </View>
         <Link
