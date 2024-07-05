@@ -1,10 +1,9 @@
 import '../global.css';
 
+import { PrivyProvider } from '@privy-io/expo';
 import { Stack } from 'expo-router';
 
 import { ThemeWrapper } from '~/components/Wrappers/ThemeWrapper';
-
-import {PrivyProvider} from '@privy-io/expo';
 
 const Layout = () => {
   return (
@@ -19,5 +18,3 @@ const Layout = () => {
 };
 
 export default Layout;
-
-// Use Stack Navigator?
