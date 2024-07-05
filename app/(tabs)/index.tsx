@@ -44,33 +44,21 @@ export default function Home() {
         <View className="mx-auto">
           <ThemeToggle />
         </View>
-        <Container title="Hello" className="mt-4">
-          <View>
-            <FText>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-              dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum."
-            </FText>
-          </View>
-        </Container>
-        <Container title="World" className="mt-4">
-          <View>
-            <FText>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-              dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum."
-            </FText>
-          </View>
-        </Container>
         <View className="mt-4">
           <CreateWalletButton />
         </View>
+        <Container title="Hello World" className="mt-4">
+          <View>
+            <FText>
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+              dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+              mollit anim id est laborum."
+            </FText>
+          </View>
+        </Container>
         <Link
           className="mt-4 bg-primary"
           href={{ pathname: '/details', params: { name: 'Dan' } }}

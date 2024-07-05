@@ -1,11 +1,10 @@
+import { useEmbeddedWallet, isNotCreated, usePrivy } from '@privy-io/expo';
 import React from 'react';
-import { useEmbeddedWallet, isNotCreated } from '@privy-io/expo';
-import { Alert } from 'react-native';
+import { Alert, View } from 'react-native';
+
 import { Button } from './Button';
-import FText from './Text/FText';
-import { usePrivy } from '@privy-io/expo';
 import Container from './Container';
-import { View } from 'react-native';
+import FText from './Text/FText';
 
 const CreateWalletButton = () => {
   const user = usePrivy();
@@ -26,10 +25,10 @@ const CreateWalletButton = () => {
 
   return (
     <View>
-    <Container className=""title="Wallet">
-    <FText className="text-lg">Your wallet has been created!</FText>
-    <FText className="text-lg"> Your adress is {wallet.account?.address}</FText>
-    </Container>
+      <Container className="" title="Wallet Data">
+        <FText className="text-lg">Your wallet has been created!</FText>
+        <FText className="text-lg">Your adress is {wallet.account?.address}</FText>
+      </Container>
     </View>
   );
 };
