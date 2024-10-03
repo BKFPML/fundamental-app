@@ -27,7 +27,7 @@ const TitleBar = ({ title }: { title: string }) => {
         style={{ marginLeft: 'auto', height: 64, width: 96 }}
         resizeMode="contain"
       />
-      {/* <SideBarMenu isOpen={isSideBarOpen} toggleSideBar={toggleSideBar} /> */}
+      <SideBarMenu isOpen={isSideBarOpen} toggleSideBar={toggleSideBar} />
     </View>
   );
 };
