@@ -15,7 +15,7 @@ const TitleBar = ({ title }: { title: string }) => {
   };
 
   return (
-    <View className="h-50 flex-row items-center gap-2 py-4">
+    <View className="h-50 z-10 flex-row items-center gap-2 py-4">
       {/* Add sidebarmenu here */}
       <TouchableOpacity onPress={toggleSideBar}>
         <Feather name="menu" size={36} className="text-text" />
