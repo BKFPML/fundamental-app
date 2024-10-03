@@ -36,8 +36,44 @@ export default function Layout() {
                 name="home"
                 className={`${focused ? 'text-primary' : 'text-text'}`}
               />
-              <FText bold className={`${focused ? 'text-primary' : 'text-text'}`}>
+              <FText bold className={`${focused ? '!text-primary' : '!text-text'}`}>
                 Home
+              </FText>
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="assets"
+        options={{
+          title: 'Assets',
+          tabBarIcon: ({ focused }) => (
+            <View className="items-center">
+              <Feather
+                size={28}
+                name="pie-chart"
+                className={`${focused ? 'text-primary' : 'text-text'}`}
+              />
+              <FText bold className={`${focused ? '!text-primary' : '!text-text'}`}>
+                Assets
+              </FText>
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="trade"
+        options={{
+          title: 'Trade',
+          tabBarIcon: ({ focused }) => (
+            <View className="items-center">
+              <Feather
+                size={28}
+                name="dollar-sign"
+                className={`${focused ? 'text-primary' : 'text-text'}`}
+              />
+              <FText bold className={`${focused ? '!text-primary' : '!text-text'}`}>
+                Trade
               </FText>
             </View>
           ),
@@ -54,7 +90,7 @@ export default function Layout() {
                 name="percent"
                 className={`${focused ? 'text-primary' : 'text-text'}`}
               />
-              <FText bold className={`${focused ? 'text-primary' : 'text-text'}`}>
+              <FText bold className={`${focused ? '!text-primary' : '!text-text'}`}>
                 Earn
               </FText>
             </View>
