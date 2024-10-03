@@ -1,15 +1,40 @@
-import { Link } from 'expo-router';
+import { usePrivy } from '@privy-io/expo';
+import { Link, router } from 'expo-router';
+import { useEffect } from 'react';
 import { View, ScrollView } from 'react-native';
 
 import { Button } from '~/components/Button';
 import Container from '~/components/Container';
+import CreateWalletButton from '~/components/CreateWalletButton';
 import HeaderBar from '~/components/HeaderBar';
+import Loading from '~/components/Loading';
 import FText from '~/components/Text/FText';
 import FTitle from '~/components/Text/FTitle';
 import ThemeToggle from '~/components/ThemeToggle';
 import { Frame } from '~/components/Wrappers/Frame';
 
-export default function Tab() {
+import 'fast-text-encoding';
+import 'react-native-get-random-values';
+import '@ethersproject/shims';
+
+export default function Home() {
+  const { isReady, user } = usePrivy();
+
+  // useEffect(() => {
+  //   if (isReady && !user) {
+  //     router.navigate('login'); // TODO: disable login page back gesture
+  //   }
+  // }, [isReady, user, router]);
+
+  if (!isReady) {
+    return <Loading />;
+  }
+
+  //* Fail safe
+  // if (!user) {
+  //   return null;
+  // }
+
   return (
     <Frame>
       <HeaderBar />
