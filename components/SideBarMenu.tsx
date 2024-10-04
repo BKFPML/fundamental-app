@@ -1,7 +1,9 @@
 import { Feather } from '@expo/vector-icons';
-import { View, TouchableOpacity, Dimensions, ScrollView } from 'react-native';
+import { View, TouchableOpacity, Dimensions } from 'react-native';
 
 import FText from './Text/FText';
+import FTitle from './Text/FTitle';
+import ThemeToggle from './ThemeToggle';
 
 interface SideBarMenuProps {
   isOpen: boolean;
@@ -15,12 +17,17 @@ const SideBarMenu = ({ isOpen, toggleSideBar }: SideBarMenuProps) => {
   const screenHeight = Dimensions.get('screen').height;
 
   return (
-    <View className="absolute left-0 top-0 z-50 w-full flex-row" style={{ height: screenHeight }}>
-      <View className="w-80 bg-gray-800 p-4 shadow-lg">
-        <TouchableOpacity onPress={toggleSideBar} className="mb-4 ml-auto">
-          <Feather name="x" size={24} color="white" />
-        </TouchableOpacity>
-        <ScrollView>
+    <View
+      className="absolute left-[-25px] top-0 w-[450px] flex-row"
+      style={{ height: screenHeight }}>
+      <View className="w-80 bg-primary p-[32px]">
+        <View className="flex-row items-center justify-between">
+          <FTitle className="mt-2 text-4xl text-white">Fundamental</FTitle>
+          <TouchableOpacity onPress={toggleSideBar} className="">
+            <Feather name="x" size={36} color="white" />
+          </TouchableOpacity>
+        </View>
+        <View className="flex flex-col space-y-5">
           <FText className="mb-4 text-lg text-white">{screenHeight}</FText>
           <TouchableOpacity className="mb-4">
             <FText className="text-white">Theme Toggle</FText>
@@ -31,7 +38,8 @@ const SideBarMenu = ({ isOpen, toggleSideBar }: SideBarMenuProps) => {
           <TouchableOpacity className="mb-4">
             <FText className="text-white">Notifications</FText>
           </TouchableOpacity>
-        </ScrollView>
+        </View>
+        <ThemeToggle />
       </View>
 
       <TouchableOpacity
