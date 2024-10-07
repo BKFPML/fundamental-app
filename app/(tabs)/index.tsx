@@ -41,9 +41,6 @@ export default function Home() {
       <ScrollView>
         <FTitle className="text-4xl">Welcome to Fundamental!</FTitle>
         <FText className="text-lg">This is Fundamental</FText>
-        <View className="mx-auto">
-          <ThemeToggle />
-        </View>
         <View className="mt-4">
           <CreateWalletButton />
         </View>

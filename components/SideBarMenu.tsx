@@ -27,15 +27,17 @@ const SideBarMenu = ({ isOpen, toggleSideBar }: SideBarMenuProps) => {
             <Feather name="x" size={36} color="white" />
           </TouchableOpacity>
         </View>
-        <View className="flex flex-col space-y-5">
-          <FText className="mb-4 text-lg text-white">{screenHeight}</FText>
-          <TouchableOpacity className="mb-4">
-            <FText className="text-white">Theme Toggle</FText>
-          </TouchableOpacity>
-          <TouchableOpacity className="mb-4">
+        <View className="mt-5">
+          <View className="mb-5 rounded-xl border-4 border-white p-3">
+            <FText className="text-white">User Data</FText>
+            <FText className="text-white" italic>
+              Wallet Address
+            </FText>
+          </View>
+          <TouchableOpacity className="mb-5">
             <FText className="text-white">Profile</FText>
           </TouchableOpacity>
-          <TouchableOpacity className="mb-4">
+          <TouchableOpacity className="mb-5">
             <FText className="text-white">Notifications</FText>
           </TouchableOpacity>
         </View>
