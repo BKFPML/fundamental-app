@@ -1,6 +1,7 @@
 import { useEmbeddedWallet, isNotCreated, usePrivy } from '@privy-io/expo';
 import React from 'react';
 import { Alert, View } from 'react-native';
+import alchemy from './Services/alchemyService';
 
 import { Button } from './Button';
 import Container from './Container';
@@ -28,6 +29,7 @@ const CreateWalletButton = () => {
       <Container className="" title="Wallet Data">
         <FText className="text-lg">Your wallet has been created!</FText>
         <FText className="text-lg">Your adress is {wallet.account?.address}</FText>
+        <Button onPress={() => alchemy.getEthBalance(wallet.account?.address ?? "")} className="bg-primary" title="Get ETH Balance" />
       </Container>
     </View>
   );
