@@ -2,8 +2,8 @@ import axios from 'axios';
 import { ALCHEMY_API_KEY } from '@env';
 
 const getEthBalance = async (address: string) => {
-    const mainnetUrl = `https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}`;
-    const baseUrl = `https://base-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}`;
+    const network = "base"
+    const Url = `https://${network}-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}`;
 
     const data = {
       jsonrpc: "2.0",
@@ -13,12 +13,10 @@ const getEthBalance = async (address: string) => {
     };
 
     try {
-      const response = await axios.post(baseUrl, data);
+      const response = await axios.post(Url, data);
       const weiBalance = response.data.result;
-      console.log('Ether balance in wei:', weiBalance);
-
       const ethBalance = parseFloat(weiBalance) / 1e18;
-      console.log('Ether balance in ETH:', ethBalance);
+
       return weiBalance;
     } catch (error) {
       console.error('Error fetching ETH balance:', error);
@@ -28,8 +26,8 @@ const getEthBalance = async (address: string) => {
 
 
 const getTokenBalances = async (address: string) => {
-  const mainnetUrl = `https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}`;
-  const baseUrl = `https://base-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}`;
+    const network = "base"
+    const Url = `https://${network}-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}`;
 
   const data = {
     jsonrpc: '2.0',
@@ -39,9 +37,9 @@ const getTokenBalances = async (address: string) => {
   };
 
   try {
-    const response = await axios.post(baseUrl, data);
+    const response = await axios.post(Url, data);
     const balances = response.data.result;
-    console.log(balances);
+
     return balances;
   } catch (error) {
     console.error('Error fetching token balances:', error);
