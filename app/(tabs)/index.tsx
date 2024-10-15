@@ -6,6 +6,7 @@ import { View, ScrollView } from 'react-native';
 import { Button } from '~/components/Button';
 import Container from '~/components/Container';
 import CreateWalletButton from '~/components/CreateWalletButton';
+import TestModule from '~/components/TestModule';
 import HeaderBar from '~/components/HeaderBar';
 import Loading from '~/components/Loading';
 import FText from '~/components/Text/FText';
@@ -44,6 +45,9 @@ export default function Home() {
         <View className="mt-4">
           <CreateWalletButton />
         </View>
+        <View className ="mt-4">
+          <TestModule />
+          </View>
         <Container title="Hello World" className="mt-4">
           <View>
             <FText>
