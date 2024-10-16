@@ -1,7 +1,7 @@
 import { useEmbeddedWallet, isNotCreated, usePrivy } from '@privy-io/expo';
 import React from 'react';
 import { Alert, View } from 'react-native';
-import alchemy from './Services/alchemyService';
+import alchemy from '../Services/alchemyService';
 
 import { Button } from './Button';
 import Container from './Container';
