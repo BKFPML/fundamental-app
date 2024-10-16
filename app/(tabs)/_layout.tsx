@@ -1,9 +1,17 @@
 import { Feather } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
+import { cssInterop } from 'nativewind';
 import { View } from 'react-native';
 
 import FText from '~/components/Text/FText';
 import { useTheme } from '~/components/Wrappers/ThemeWrapper';
+
+cssInterop(Feather, {
+  className: {
+    target: 'style',
+    nativeStyleToProp: { color: 'color' },
+  },
+});
 
 export default function Layout() {
   const { theme } = useTheme();
