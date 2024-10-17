@@ -47,7 +47,6 @@ const sendETH = async (provider: PrivyEmbeddedWalletProvider, destination: strin
             to,
             value: amount,
         });
-        console.log('Transaction hash:', txHash);
     } catch (error) {
         console.error('Error sending ETH:', error);
     }
