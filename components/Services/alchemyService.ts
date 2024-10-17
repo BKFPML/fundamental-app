@@ -1,8 +1,8 @@
 import axios from 'axios';
+const ALCHEMY_API_KEY = process.env.EXPO_PUBLIC_ALCHEMY_API_KEY
 
 const getEthBalance = async (address: string) => {
     const network = "base"
-    const ALCHEMY_API_KEY = process.env.EXPO_PUBLIC_ALCHEMY_API_KEY
     const Url = `https://${network}-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}`;
 
     const data = {
