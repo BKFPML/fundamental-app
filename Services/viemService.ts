@@ -30,4 +30,27 @@ const signMessage = async ( provider: PrivyEmbeddedWalletProvider, message: stri
     }
 };
 
-export default { getWalletClient, signMessage };
+const sendETH = async (provider: PrivyEmbeddedWalletProvider, destination: string, amount: bigint) => {
+    const client = await getWalletClient(provider);
+    const [account] = await client.getAddresses();
+
+    if (!destination.startsWith("0x") || destination.length !== 42) {
+        console.error('Invalid destination address:', destination);
+        return;
+    }
+
+    const to = destination as `0x${string}`;
+    try {
+        const txHash = await client.sendTransaction({
+            account: account,
+            from: account,
+            to,
+            value: amount,
+        });
+        console.log('Transaction hash:', txHash);
+    } catch (error) {
+        console.error('Error sending ETH:', error);
+    }
+}
+
+export default { getWalletClient, signMessage, sendETH };
