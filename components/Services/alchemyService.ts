@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ALCHEMY_API_KEY } from '@env';
+const ALCHEMY_API_KEY = process.env.EXPO_PUBLIC_ALCHEMY_API_KEY
 
 const getEthBalance = async (address: string) => {
     const network = "base"
