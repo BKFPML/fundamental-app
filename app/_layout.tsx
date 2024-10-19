@@ -1,6 +1,6 @@
 import '../global.css';
 
-import { PrivyProvider, PrivyElements } from '@privy-io/expo';
+import { PrivyProvider } from '@privy-io/expo';
 import { Stack } from 'expo-router';
 
 import { ThemeWrapper } from '~/components/Wrappers/ThemeWrapper';
@@ -15,7 +15,6 @@ const Layout = () => {
           <Stack.Screen name="login" options={{ headerShown: false }} />
         </Stack>
       </ThemeWrapper>
-      <PrivyElements/>
     </PrivyProvider>
   );
 };
