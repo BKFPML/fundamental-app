@@ -4,6 +4,8 @@ import { Alert, View } from 'react-native';
 import alchemy from '../Services/alchemyService';
 import signMessage from '~/Services/privyService';
 import { isConnected, needsRecovery } from '@privy-io/expo';
+import viem from '~/Services/viemService';
+
 import { Button } from './Button';
 import Container from './Container';
 import FText from './Text/FText';
@@ -16,24 +18,11 @@ const TestModule = () => {
     return <FText className="text-lg">Wallet not created</FText>;
   }
 
-  if (wallet.status === 'connected') {
-    const provider = wallet.provider;
+  if (wallet.status != 'connected') {
+    return <FText className="text-lg">Wallet not connected</FText>;
   }
-  const handleSignMessage = async ( message : string) => {
-    try {
-      if (!isConnected(wallet)) {
-        throw new Error("Wallet not connected");
-      }
-      if (!user.user) {
-        throw new Error("No user found");
-      }
-      const provider = wallet.provider;
 
-      await signMessage(provider, user.user, message);
-    } catch (error) {
-      console.error("Failed to sign message:", error);
-    }
-  };
+  const walletClient = viem.getWalletClient(wallet.provider);
 
   return (
     <View>
@@ -41,7 +30,8 @@ const TestModule = () => {
         <FText className="text-lg">Your address is {wallet.account?.address}</FText>
         <Button onPress={() => alchemy.getEthBalance(wallet.account?.address ?? "")} className="bg-primary" title="Get ETH Balance" />
         <FText className="text-lg">Privy DID is {user.user?.id}</FText>
-        <Button onPress={() => handleSignMessage("")} className="bg-primary" title="Sign Message" />
+        <Button onPress={() => viem.signMessage(wallet.provider, 'hello world')} className="bg-primary" title="Test Sign Message" />
+        <Button onPress={() => viem.sendETH(wallet.provider, '0x4DcBa6746997427dAC9341C2A007f10d673Ad878', 21n)} className="bg-primary" title="Send ETH" />
       </Container>
     </View>
   );
