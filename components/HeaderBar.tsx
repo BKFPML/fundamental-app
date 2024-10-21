@@ -1,22 +1,22 @@
 import { Feather } from '@expo/vector-icons';
-import { useState } from 'react';
+import { DrawerActions } from '@react-navigation/native';
+import { useNavigation } from 'expo-router';
 import { View, Image, TouchableOpacity } from 'react-native';
 
-import SideBarMenu from './SideBarMenu';
 import Title from './Text/FTitle';
 
 const fundy = require('../assets/fundy.png');
 
 const TitleBar = ({ title }: { title: string }) => {
-  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+  const navigation = useNavigation();
 
-  const toggleSideBar = () => {
-    setIsSideBarOpen(!isSideBarOpen);
+  const openDrawer = () => {
+    navigation.dispatch(DrawerActions.openDrawer());
   };
 
   return (
     <View className="h-50 z-10 flex-row items-center gap-2 py-4">
-      <TouchableOpacity onPress={toggleSideBar}>
+      <TouchableOpacity onPress={openDrawer}>
         <Feather name="menu" size={36} className="text-text" />
       </TouchableOpacity>
       <Title className="mt-2 text-4xl text-text">{title}</Title>
@@ -25,7 +25,6 @@ const TitleBar = ({ title }: { title: string }) => {
         style={{ marginLeft: 'auto', height: 64, width: 96 }}
         resizeMode="contain"
       />
-      <SideBarMenu isOpen={isSideBarOpen} toggleSideBar={toggleSideBar} />
     </View>
   );
 };
