@@ -21,20 +21,20 @@ import '@ethersproject/shims';
 export default function Home() {
   const { isReady, user } = usePrivy();
 
-  useEffect(() => {
-    if (isReady && !user) {
-      router.navigate('login'); // TODO: disable login page back gesture
-    }
-  }, [isReady, user, router]);
+  // useEffect(() => {
+  //   if (isReady && !user) {
+  //     router.navigate('login'); // TODO: disable login page back gesture
+  //   }
+  // }, [isReady, user, router]);
 
   if (!isReady) {
     return <Loading />;
   }
 
   //* Fail safe
-  if (!user) {
-    return null;
-  }
+  // if (!user) {
+  //   return null;
+  // }
 
   return (
     <Frame>
@@ -42,9 +42,6 @@ export default function Home() {
       <ScrollView>
         <FTitle className="text-4xl">Welcome to Fundamental!</FTitle>
         <FText className="text-lg">This is Fundamental</FText>
-        <View className="mx-auto">
-          <ThemeToggle />
-        </View>
         <View className="mt-4">
           <CreateWalletButton />
         </View>
