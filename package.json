@@ -17,7 +17,7 @@
     "@expo-google-fonts/dm-sans": "^0.2.3",
     "@expo-google-fonts/dm-serif-text": "^0.2.3",
     "@expo/vector-icons": "^14.0.0",
-    "@privy-io/expo": "^0.20.4",
+    "@privy-io/expo": "^0.27.0",
     "@react-native-async-storage/async-storage": "1.23.1",
     "@react-native-community/netinfo": "11.3.1",
     "@react-navigation/native": "^6.1.7",
@@ -52,7 +52,8 @@
     "react-native-screens": "3.31.1",
     "react-native-svg": "15.2.0",
     "react-native-web": "~0.19.10",
-    "react-native-webview": "13.8.6"
+    "react-native-webview": "13.8.6",
+    "viem": "^2.21.28"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

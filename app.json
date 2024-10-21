@@ -39,6 +39,8 @@
       "package": "com.bendrbang.fundamentalapp"
     },
     "extra": {
+      "privyAppId": "clxd5oc5m007jrpv8y8clt6z7",
+      "privyClientId": "client-WY2nCVozcYUzD3HEthM1D1PKt3cFK56DG9mKHCtbZA3Uc",
       "router": {
         "origin": false
       },
