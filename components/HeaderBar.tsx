@@ -7,7 +7,29 @@ import Title from './Text/FTitle';
 
 const fundy = require('../assets/fundy.png');
 
-const TitleBar = ({ title }: { title: string }) => {
+/**
+ * TitleBar Component
+ *
+ * This component renders a title bar with a menu icon, a title, and an image.
+ * The menu icon triggers the opening of a drawer when pressed. The component
+ * uses the `useNavigation` hook to handle navigation actions.
+ *
+ * @param {object} props - The props for the TitleBar component.
+ * @param {string} props.title - The title text to be displayed in the title bar.
+ *
+ * @returns {JSX.Element} The title bar containing a menu button, title text, and an image.
+ *
+ * @example
+ * ```tsx
+ * <TitleBar title="Home" />
+ * ```
+ *
+ * @remarks
+ * - The menu icon uses the `Feather` icon library with the `menu` icon.
+ * - The `openDrawer` function dispatches a navigation action to open the drawer.
+ * - The `fundy` image is displayed on the right side of the title bar.
+ */
+const TitleBar = ({ title }: { title: string }): JSX.Element => {
   const navigation = useNavigation();
 
   const openDrawer = () => {
