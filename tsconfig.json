@@ -7,14 +7,16 @@
       "~/*": [
         "*"
       ]
-    },
-    "types": ["nativewind/types"]
+    }
   },
   "include": [
+    "**/*.ts",
+    "**/*.tsx",
     "app/*",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "index.ts"
+    "index.ts",
+    "nativewind-env.d.ts"
   ],
   "exclude": [
     "node_modules",
