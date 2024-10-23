@@ -1,54 +1,106 @@
-FROM cimg/android:2024.10.1-node
+# # Use the official Node.js image as the base image
+# FROM node:latest
 
-WORKDIR /app
-COPY package*.json ./
+# # Install necessary dependencies for Android SDK
+# RUN apt-get update && apt-get install -y \
+#     openjdk-17-jdk \
+#     wget \
+#     unzip \
+#     && rm -rf /var/lib/apt/lists/*
 
-# Print the current user for verification
-RUN whoami
+# # Set environment variables for Android SDK
+# ENV ANDROID_SDK_ROOT=/usr/local/android-sdk
+# ENV PATH=${PATH}:${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin:${ANDROID_SDK_ROOT}/platform-tools
 
-# Switch to root user to create node user and group
-USER root
+# # Download and install the latest Android SDK
+# RUN mkdir -p ${ANDROID_SDK_ROOT}/cmdline-tools/latest
+# RUN cd ${ANDROID_SDK_ROOT}/cmdline-tools/latest && \
+#     wget https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip -O commandlinetools.zip
+# RUN cd ${ANDROID_SDK_ROOT}/cmdline-tools/latest && \
+#     unzip commandlinetools.zip
+# RUN cd ${ANDROID_SDK_ROOT}/cmdline-tools/latest && \
+#     rm commandlinetools.zip
+# RUN cd ${ANDROID_SDK_ROOT}/cmdline-tools/latest && \
+#     mv cmdline-tools/* . && \
+#     rmdir cmdline-tools
 
-# Create node user and group if they do not exist
-RUN groupadd -g 1000 node && useradd -u 1000 -g node -m node
+# # Ensure sdkmanager is executable
+# RUN chmod +x ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager
 
-# Set the correct ownership and permissions
-RUN chown -R node:node /app && chmod -R 755 /app
+# # Accept SDK licenses and install necessary packages
+# RUN yes | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager --licenses
+# RUN ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-30"
 
-# Run npm install as node user with unsafe-perm flag
-RUN npm install --unsafe-perm
+# # Create app directory
+# WORKDIR /usr/src/app
 
-# Install required dependencies for Android SDK
-RUN apt-get update && apt-get install -y wget unzip
+# # Copy package.json and package-lock.json
+# COPY package*.json ./
 
-# Download and install Android SDK
-RUN mkdir -p /root/Android/sdk
-RUN wget -q https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip -O android-sdk.zip
-RUN unzip android-sdk.zip -d /root/Android/sdk/cmdline-tools
-RUN mv /root/Android/sdk/cmdline-tools/cmdline-tools /root/Android/sdk/cmdline-tools/latest
-RUN rm android-sdk.zip
+# # Install Node.js dependencies
+# RUN npm install
 
-# Install platform tools and SDKs
-# RUN /root/Android/sdk/cmdline-tools/latest/bin/sdkmanager --licenses --no_interaction
-# RUN /root/Android/sdk/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-30"
+# # Copy the rest of the application code
+# COPY . .
 
-ENV ANDROID_HOME=/home/circleci/android-sdk
+# # Expose necessary ports (if any)
+# EXPOSE 8081
 
-RUN $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --update
+# # Define the entry point
+# CMD ["npm", "start"]
 
-RUN echo "ANDROID_HOME is: $ANDROID_HOME"
-RUN ls -l $ANDROID_HOME/cmdline-tools/latest/bin/
+# Use the official Node.js image as the base image
+FROM node:latest
 
+# Install necessary dependencies for Android SDK
+RUN apt-get update && apt-get install -y \
+    openjdk-17-jdk \
+    wget \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
 
-# Accept Android SDK licenses
-RUN yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
+# Set environment variables for Android SDK
+ENV ANDROID_SDK_ROOT=/usr/local/android-sdk
+ENV PATH=${PATH}:${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin:${ANDROID_SDK_ROOT}/platform-tools
 
-# Install required Android SDK packages
-RUN $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-30"
+# Download and install the latest Android SDK
+RUN mkdir -p ${ANDROID_SDK_ROOT}/cmdline-tools/latest
+RUN cd ${ANDROID_SDK_ROOT}/cmdline-tools/latest && \
+    wget https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip -O commandlinetools.zip
+RUN cd ${ANDROID_SDK_ROOT}/cmdline-tools/latest && \
+    unzip commandlinetools.zip
+RUN cd ${ANDROID_SDK_ROOT}/cmdline-tools/latest && \
+    rm commandlinetools.zip
+RUN cd ${ANDROID_SDK_ROOT}/cmdline-tools/latest && \
+    mv cmdline-tools/* . && \
+    rmdir cmdline-tools
 
+# Ensure sdkmanager is executable
+RUN chmod +x ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager
 
+# Accept SDK licenses and install necessary packages
+RUN yes | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager --licenses
+RUN ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-30"
+
+# Install ADB
+RUN ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager "platform-tools"
+
+# Expose ADB port
+EXPOSE 5037
+
+# Copy the rest of the application code
 COPY . .
 
+# Copy the start script
+COPY start.sh /usr/src/app/start.sh
+
+# Ensure the start script is executable
+RUN chmod +x /usr/src/app/start.sh
+
+RUN npm install
+
+# Expose necessary ports (if any)
 EXPOSE 8081
 
-CMD ["sudo", "npm", "start"]
+# Use the start script as the entry point
+CMD ["/usr/src/app/start.sh"]
